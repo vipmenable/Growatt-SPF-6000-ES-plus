@@ -1,0 +1,569 @@
+####################################
+###   Growatt ESP 6000 ES PLUS   ###
+####################################
+
+  - name: spf6000es
+    type: rtuovertcp
+    host: 192.168.88.30
+    port: 502
+
+    binary_sensors:
+    # The Standby On/Off state
+    - name: Standby
+      unique_id: spf_standby_state
+      slave: 11
+      address: 0
+      input_type: holding
+
+    sensors: # this is read only input registers
+# System run state
+    - name: System_Status
+      unique_id: spf_system_status
+      slave: 11
+      address: 0
+      input_type: input
+      data_type: int16
+# PV1 voltage
+    - name: Vpv1
+      unique_id: spf_pv1_voltage
+      device_class: voltage
+      unit_of_measurement: V
+      slave: 11
+      address: 1
+      input_type: input
+      data_type: int16
+      scale: 0.1
+      precision: 1
+# PV2 voltage
+    - name: Vpv2
+      unique_id: spf_pv2_voltage
+      device_class: voltage
+      unit_of_measurement: V
+      slave: 11
+      address: 2
+      input_type: input
+      data_type: int16
+      scale: 0.1
+      precision: 1
+# PV1 charge power  
+    - name: Ppv1
+      unique_id: spf_pv1_charge_power
+      device_class: power
+      unit_of_measurement: W
+      slave: 11
+      address: 3
+      input_type: input
+      data_type: uint32
+      scale: 0.1
+      precision: 1
+# PV2 charge power  
+    - name: Ppv2
+      unique_id: spf_pv2_charge_power
+      device_class: power
+      unit_of_measurement: W
+      slave: 11
+      address: 5
+      input_type: input
+      data_type: uint32
+      scale: 0.1
+      precision: 1
+# Buck1 current
+    - name: Buck1Curr
+      unique_id: spf_buck1_current
+      device_class: current
+      unit_of_measurement: A
+      slave: 11
+      address: 7
+      input_type: input
+      data_type: int16
+      scale: 0.1
+      offset: 0
+      precision: 1
+# Buck2 current
+    - name: Buck2Curr
+      unique_id: spf_buck2_current
+      device_class: current
+      unit_of_measurement: A
+      slave: 11
+      address: 8
+      input_type: input
+      data_type: int16
+      scale: 0.1
+      precision: 1
+# Output active power  
+    - name: OP_Watt
+      unique_id: spf_output_active_power
+      device_class: power
+      unit_of_measurement: W
+      slave: 11
+      address: 9
+      input_type: input
+      data_type: uint32
+      scale: 0.1
+      precision: 1
+# Output apparent power  
+    - name: OP_VA
+      unique_id: spf_output_apparent_power
+      device_class: apparent_power
+      unit_of_measurement: VA
+      slave: 11
+      address: 11
+      input_type: input
+      data_type: uint32
+      scale: 0.1
+      precision: 1
+# AC charge watt  
+    - name: ACChr_Watt
+      unique_id: spf_ac_charge_power
+      device_class: power
+      unit_of_measurement: W
+      slave: 11
+      address: 13
+      input_type: input
+      data_type: uint32
+      scale: 0.1
+      precision: 1
+# AC charge apparent power  
+    - name: ACChr_VA
+      unique_id: spf_ac_charge_apparent_power
+      device_class: apparent_power
+      unit_of_measurement: VA
+      slave: 11
+      address: 15
+      input_type: input
+      data_type: uint32
+      scale: 0.1
+      precision: 1
+# Battery volt (M3)
+    - name: Bat_Volt
+      unique_id: spf_battery_voltage
+      device_class: voltage
+      unit_of_measurement: V
+      slave: 11
+      address: 17
+      input_type: input
+      data_type: int16
+      scale: 0.01
+      precision: 2
+# Battery SOC
+    - name: Battery_SOC
+      unique_id: spf_battery_soc
+      device_class: battery
+      unit_of_measurement: "%"
+      slave: 11
+      address: 18
+      input_type: input
+      data_type: int16
+# Bus Voltage
+    - name: Bus_Volt
+      unique_id: spf_bus_voltage
+      device_class: voltage
+      unit_of_measurement: V
+      slave: 11
+      address: 19
+      input_type: input
+      data_type: int16
+      scale: 0.1
+      precision: 1
+# AC input Volt
+    - name: Grid_Volt
+      unique_id: spf_grid_voltage
+      device_class: voltage
+      unit_of_measurement: V
+      slave: 11
+      address: 20
+      input_type: input
+      data_type: int16
+      scale: 0.1
+      precision: 1
+# AC input frequency
+    - name: Line_Freq
+      unique_id: spf_line_frequency
+      device_class: frequency
+      unit_of_measurement: Hz
+      slave: 11
+      address: 21
+      input_type: input
+      data_type: int16
+      scale: 0.01
+      precision: 2
+# AC output Volt
+    - name: OutputVolt
+      unique_id: spf_output_voltage
+      device_class: voltage
+      unit_of_measurement: V
+      slave: 11
+      address: 22
+      input_type: input
+      data_type: int16
+      scale: 0.1
+# AC output frequency
+    - name: Output_Freq
+      unique_id: spf_output_frequency
+      device_class: frequency
+      unit_of_measurement: Hz
+      slave: 11
+      address: 23
+      input_type: input
+      data_type: int16
+      scale: 0.01
+      precision: 2
+# DC output Volt
+    - name: OutputDCV
+      unique_id: spf_dc_output_voltage
+      device_class: voltage
+      unit_of_measurement: V
+      slave: 11
+      address: 24
+      input_type: input
+      data_type: int16
+      scale: 0.1
+      precision: 1
+# Inv Temperature
+    - name: InvTemp
+      unique_id: spf_inverter_temp
+      device_class: temperature
+      unit_of_measurement: °C
+      slave: 11
+      address: 25
+      input_type: input
+      data_type: int16
+      scale: 0.1
+      precision: 1
+# DC-DC Temperature
+    - name: DCDCTemp
+      unique_id: spf_dc_dc_temp
+      device_class: temperature
+      unit_of_measurement: °C
+      slave: 11
+      address: 26
+      input_type: input
+      data_type: int16
+      scale: 0.1
+      precision: 1
+# Load Percent
+    - name: LoadPercent
+      unique_id: spf_load_percent
+      unit_of_measurement: "%"
+      slave: 11
+      address: 27
+      input_type: input
+      data_type: int16
+      scale: 0.1
+      precision: 1
+# Battery-port volt (DSP)
+    - name: Bat_s_Volt
+      unique_id: spf_battery_port_volt
+      device_class: voltage
+      unit_of_measurement: V
+      slave: 11
+      address: 28
+      input_type: input
+      data_type: int16
+      scale: 0.01
+      precision: 2
+# Battery-bus volt (DSP)
+    - name: Bat_Volt_DSP
+      unique_id: spf_battery_bus_volt
+      device_class: voltage
+      unit_of_measurement: V
+      slave: 11
+      address: 29
+      input_type: input
+      data_type: int16
+      scale: 0.01
+      precision: 2
+# Buck1 Temperature
+    - name: Buck1_NTC
+      unique_id: spf_buck1_temp
+      device_class: temperature
+      unit_of_measurement: °C
+      slave: 11
+      address: 32
+      input_type: input
+      data_type: int16
+      scale: 0.1
+      precision: 1
+# Buck2 Temperature
+    - name: Buck2_NTC
+      unique_id: spf_buck2_temp
+      device_class: temperature
+      unit_of_measurement: °C
+      slave: 11
+      address: 33
+      input_type: input
+      data_type: int16
+      scale: 0.1
+      precision: 1
+# AC Output Current
+    - name: OP_Curr
+      unique_id: spf_ac_output_current
+      device_class: current
+      unit_of_measurement: A
+      slave: 11
+      address: 34
+      input_type: input
+      data_type: int16
+      scale: 0.1
+      precision: 1
+# Inv Current
+    - name: Inv_Curr
+      unique_id: spf_inv_current
+      device_class: current
+      unit_of_measurement: A
+      slave: 11
+      address: 35
+      input_type: input
+      data_type: int16
+      scale: 0.1
+      precision: 1
+# AC input watt
+    - name: AC_InWatt
+      unique_id: spf_ac_in_power
+      device_class: power
+      unit_of_measurement: W
+      slave: 11
+      address: 36
+      input_type: input
+      data_type: uint32
+      scale: 0.1
+      precision: 1
+# AC input apparent power
+    - name: AC_InVA
+      unique_id: spf_ac_in_apparent_power
+      device_class: apparent_power
+      unit_of_measurement: VA
+      slave: 11
+      address: 38
+      input_type: input
+      data_type: uint32
+      scale: 0.1
+      precision: 1
+      
+################################    
+#    Energy Metering           # 
+################################
+
+#  PV1 Energy today  
+    - name: PV_today
+      unique_id: spf_pv_energy_today
+      device_class: energy
+      unit_of_measurement: kWh
+      slave: 11
+      address: 48
+      input_type: input
+      data_type: uint32
+      scale: 0.1
+      precision: 1
+# PV1 Energy total  
+    - name: PV_total
+      unique_id: spf_pv_energy_total
+      device_class: energy
+      unit_of_measurement: kWh
+      state_class: total_increasing
+      slave: 11
+      address: 50
+      input_type: input
+      data_type: uint32
+      scale: 0.1
+      precision: 1
+#  PV2 Energy today  
+    - name: Epv2_today
+      unique_id: spf_Epv2_energy_today
+      device_class: energy
+      unit_of_measurement: kWh
+      slave: 11
+      address: 52
+      input_type: input
+      data_type: uint32
+      scale: 0.1
+      precision: 1
+# PV2 Energy total  
+    - name: Epv2_total
+      unique_id: spf_Epv2_energy_total
+      device_class: energy
+      unit_of_measurement: kWh
+      state_class: total_increasing
+      slave: 11
+      address: 54
+      input_type: input
+      data_type: uint32
+      scale: 0.1
+      precision: 1      
+      
+# AC charge Energy today  
+    - name: Eac_chr_today
+      unique_id: spf_ac_chr_today
+      device_class: energy
+      unit_of_measurement: kWh
+      slave: 11
+      address: 56
+      input_type: input
+      data_type: uint32
+      scale: 0.1
+      precision: 1
+# AC charge Energy total  
+    - name: Eac_chr_total
+      unique_id: spf_ac_chr_total
+      device_class: energy
+      unit_of_measurement: kWh
+      state_class: total_increasing
+      slave: 11
+      address: 58
+      input_type: input
+      data_type: uint32
+      scale: 0.1
+      precision: 1
+# Bat discharge Energy today  
+    - name: Ebat_dischr_today
+      unique_id: spf_bat_dischr_today
+      device_class: energy
+      unit_of_measurement: kWh
+      slave: 11
+      address: 60
+      input_type: input
+      data_type: uint32
+      scale: 0.1
+      precision: 1
+# Bat discharge Energy total  
+    - name: Ebat_dischr_total
+      unique_id: spf_bat_dischr_total
+      device_class: energy
+      unit_of_measurement: kWh
+      state_class: total_increasing
+      slave: 11
+      address: 62
+      input_type: input
+      data_type: uint32
+      scale: 0.1
+      precision: 1
+# AC discharge Energy today  
+    - name: Eac_dischr_today
+      unique_id: spf_ac_dischr_today
+      device_class: energy
+      unit_of_measurement: kWh
+      slave: 11
+      address: 64
+      input_type: input
+      data_type: uint32
+      scale: 0.1
+      precision: 1
+# AC discharge Energy total  
+    - name: Eac_dischr_total
+      unique_id: spf_ac_dischr_total
+      device_class: energy
+      unit_of_measurement: kWh
+      state_class: total_increasing
+      slave: 11
+      address: 66
+      input_type: input
+      data_type: uint32
+      scale: 0.1
+      precision: 1
+# OP discharge Energy today  
+    - name: Eop_dischr_today
+      unique_id: spf_op_dischr_today
+      device_class: energy
+      unit_of_measurement: kWh
+      slave: 11
+      address: 85
+      input_type: input
+      data_type: uint32
+      scale: 0.1
+      precision: 1
+# OP discharge Energy total  
+    - name: Eop_dischr_total
+      unique_id: spf_op_dischr_total
+      device_class: energy
+      unit_of_measurement: kWh
+      state_class: total_increasing
+      slave: 11
+      address: 87
+      input_type: input
+      data_type: uint32
+      scale: 0.1
+      precision: 1
+
+# Battery power;
+    # Positive:Battery Discharge Power;
+    # Negative: Battery Charge Power;
+    - name: Bat_Watt
+      unique_id: spf_bat_power
+      device_class: power
+      unit_of_measurement: W
+      slave: 11
+      address: 77
+      input_type: input
+      data_type: int32
+      scale: 0.1
+      precision: 1
+    # Total Charge current
+    - name: TotalChgCur
+      unique_id: spf_charge_current
+      device_class: current
+      unit_of_measurement: A
+      slave: 11
+      address: 83
+      input_type: input
+      data_type: int16
+      scale: 0.1
+      precision: 1
+    # Total DisCharge current
+    - name: TotalDisChgCur
+      unique_id: spf_discharge_current
+      device_class: current
+      unit_of_measurement: A
+      slave: 11
+      address: 84
+      input_type: input
+      data_type: int16
+      scale: 0.1
+      precision: 1
+
+#####################################
+#  data readings from connected bms #
+#####################################
+
+    # BMS SOC
+    - name: BMS_SOC
+      unique_id: spf_bms_soc
+      device_class: battery
+      unit_of_measurement: "%"
+      slave: 11
+      address: 203
+      input_type: input
+      data_type: int16
+    # BMS Battery Average Voltage
+    - name: BMS_BatteryVolt
+      unique_id: spf_bms_voltage
+      device_class: voltage
+      unit_of_measurement: V
+      slave: 11
+      address: 204
+      input_type: input
+      data_type: int16
+      scale: 0.01
+      precision: 2
+    # BMS Battery Average current
+    - name: BMS_BatteryCurr
+      unique_id: spf_bms_current
+      device_class: current
+      unit_of_measurement: A
+      slave: 11
+      address: 205
+      input_type: input
+      data_type: int16
+      scale: 0.1
+      precision: 1
+    # BMS Battery Average temperature
+    - name: BMS_BatteryTemp
+      unique_id: spf_bms_avrg_temp
+      device_class: temperature
+      unit_of_measurement: °C
+      slave: 11
+      address: 206
+      input_type: input
+      data_type: int16
+      scale: 0.1
+      precision: 1      
+      
