@@ -1,2 +1,3 @@
 Home Assistant Modbus configuration file, I'm using for data reading from Growatt offgrid inverter SPF6000ESplus.
 For communication with the inverter i use WiFi serial server NA611-SA from Ebyte.
+![NA611-SA](https://github.com/user-attachments/assets/f339f7ef-0792-4160-ade2-727260d7e2a8)
