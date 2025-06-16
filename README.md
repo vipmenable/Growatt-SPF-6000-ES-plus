@@ -6,3 +6,5 @@ For communication with the inverter i use WiFi serial server NA611-SA from Ebyte
 To use this configuration file, you need to add this row to your configuration.yaml:
 ```
 modbus: !include modbus.yaml
+```
+And you need change the host IP address and slave device address for each entties according to your hardware setup.
