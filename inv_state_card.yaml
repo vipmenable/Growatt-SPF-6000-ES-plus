@@ -1,6 +1,6 @@
 type: custom:mushroom-title-card
 title: |-
-  СТАН ІНВРТОРА:
+  INVERTOR STATUS:
   {% if states('sensor.system_status') == '0'%}
   Standby
   {% elif states('sensor.system_status') == '1'%}
@@ -29,4 +29,5 @@ title: |-
 subtitle: ""
 grid_options:
   columns: 9
+
   rows: auto
