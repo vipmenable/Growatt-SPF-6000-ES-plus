@@ -8,3 +8,15 @@ To use this configuration file, you need to add this row to your configuration.y
 modbus: !include modbus.yaml
 ```
 And you need change the host IP address and slave device address for each entties according to your hardware setup.
+
+For connection I use RS485 communication port (for expansion) - marked 17:
+
+![bottom view](/spf6000es_bottom.png)
+
+Pinout of this port:
+
+![pinout](/RS485_expansion_pinout.png)
+
+I used standard RJ45 patch cable, cutted one side and connected corresponding wires to pins A and B on NA611-SA server.
+
+It is possible to use any suitable RS485 to Ethernet senvers instead NA611-SA. For server setup, please refer to original documentation.
