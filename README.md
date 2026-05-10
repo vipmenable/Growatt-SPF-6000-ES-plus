@@ -7,7 +7,7 @@ And you need change the host IP address and slave device address for each enttie
 
 For communication with the inverter used WiFi serial server [NA611-SA](https://www.cdebyte.com/products/NA611-SA/2#Pin) from Ebyte. 
 
-![NA611-SA](/NA611-SA.png){: width="50%"}
+![NA611-SA](/NA611-SA.png =250x250)
 
 On Invertor side used RS485 communication port (for expansion) - marked 17:
 
