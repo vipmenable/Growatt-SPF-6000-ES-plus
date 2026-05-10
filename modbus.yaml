@@ -3,7 +3,7 @@
 ####################################
   - name: spf6000es
     type: rtuovertcp
-    host: 192.168.88.30
+    host: xxx.xxx.xxx.xxx
     port: 502
     
     message_wait_milliseconds: 30
